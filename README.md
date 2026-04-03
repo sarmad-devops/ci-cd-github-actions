@@ -1,2 +1,2 @@
-# sarmad-devops-ci-cd-github-actions
+#ci-cd-github-actions
 Automated CI/CD pipeline using GitHub Actions to build and push 
