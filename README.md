@@ -5,17 +5,26 @@ Automated CI/CD pipeline that tests, builds, and pushes a Docker image to Docker
 ---
 
 ## 🔄 Pipeline Flow
-
-| Step | Action | Tool |
-|------|--------|------|
-| 1 | Code pushed to GitHub | Git |
-| 2 | Automated tests run | Pytest |
-| 3 | Docker image built | Docker |
-| 4 | Image pushed to DockerHub | DockerHub |
-| 5 | Security vulnerability scan | Trivy |
-
+```
+Code Push to GitHub
+│
+▼
+┌───────────────┐
+│  Run Tests    │ ← pytest
+└──────┬────────┘
+│ Pass ✅
+▼
+┌───────────────┐
+│ Docker Build  │ ← Multi-stage
+│   & Push      │ ← DockerHub
+└──────┬────────┘
+│
+▼
+┌───────────────┐
+│ Security Scan │ ← Trivy
+└───────────────┘
 > Pipeline stops if tests fail — no broken code gets deployed!
-
+````
 ## ✅ Pipeline Features
 
 - Automated testing before every build
