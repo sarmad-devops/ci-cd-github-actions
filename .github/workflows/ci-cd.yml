@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-app
+  DOCKER_IMAGE: ${{ secrets.sarmad122 }}/ci-cd-app
 
 jobs:
   test:
