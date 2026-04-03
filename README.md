@@ -5,24 +5,16 @@ Automated CI/CD pipeline that tests, builds, and pushes a Docker image to Docker
 ---
 
 ## 🔄 Pipeline Flow
-Code Push to GitHub
-│
-▼
-┌───────────────┐
-│  Run Tests    │ ← pytest
-└──────┬────────┘
-│ Pass ✅
-▼
-┌───────────────┐
-│ Docker Build  │ ← Multi-stage
-│   & Push      │ ← DockerHub
-└──────┬────────┘
-│
-▼
-┌───────────────┐
-│ Security Scan │ ← Trivy
-└───────────────┘
----
+
+| Step | Action | Tool |
+|------|--------|------|
+| 1 | Code pushed to GitHub | Git |
+| 2 | Automated tests run | Pytest |
+| 3 | Docker image built | Docker |
+| 4 | Image pushed to DockerHub | DockerHub |
+| 5 | Security vulnerability scan | Trivy |
+
+> Pipeline stops if tests fail — no broken code gets deployed!
 
 ## ✅ Pipeline Features
 
@@ -36,6 +28,7 @@ Code Push to GitHub
 ---
 
 ## 📁 Project Structure
+```
 ci-cd-github-actions/
 ├── app/
 │   ├── app.py              # Flask application
@@ -46,8 +39,7 @@ ci-cd-github-actions/
 │   └── workflows/
 │       └── ci-cd.yml       # GitHub Actions pipeline
 └── README.md
-
----
+```
 
 ## 🐳 Docker Image
 ```bash
